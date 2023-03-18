@@ -1,6 +1,5 @@
 package ru.tinkoff.edu.java.linkparser;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

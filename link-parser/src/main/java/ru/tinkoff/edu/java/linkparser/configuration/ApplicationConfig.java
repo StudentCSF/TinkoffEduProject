@@ -3,20 +3,19 @@ package ru.tinkoff.edu.java.linkparser.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.tinkoff.edu.java.linkparser.component.GitHubLinkParserComponentImpl;
-import ru.tinkoff.edu.java.linkparser.component.BaseLinkParserComponent;
+import ru.tinkoff.edu.java.linkparser.component.ILinkParserComponent;
 import ru.tinkoff.edu.java.linkparser.component.StackOverflowLinkParserComponentImpl;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 @Configuration
 public class ApplicationConfig {
 
     @Bean
-    public Map<String, Class<? extends BaseLinkParserComponent>> supportedLinks() {
-        Map<String, Class<? extends BaseLinkParserComponent>> linksPrefixParserMap = new HashMap<>();
-        linksPrefixParserMap.put("https://github.com/", GitHubLinkParserComponentImpl.class);
-        linksPrefixParserMap.put("https://stackoverflow.com/", StackOverflowLinkParserComponentImpl.class);
-        return linksPrefixParserMap;
+    public List<ILinkParserComponent> parsers() {
+        return List.of(
+                new GitHubLinkParserComponentImpl(),
+                new StackOverflowLinkParserComponentImpl()
+        );
     }
 }
