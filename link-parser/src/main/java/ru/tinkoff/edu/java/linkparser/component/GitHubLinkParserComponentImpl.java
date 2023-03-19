@@ -9,17 +9,17 @@ import ru.tinkoff.edu.java.linkparser.data.response.IParsedLinkResponse;
 public record GitHubLinkParserComponentImpl()
         implements ILinkParserComponent {
 
+    private static final String PREFIX = "https://github.com/";
+
     @Override
     public IParsedLinkResponse parseLink(LinkRequest link) {
         String url = link.url();
 
-        final String prefix = "https://github.com/";
-
-        if (!url.startsWith(prefix)) {
+        if (!url.startsWith(PREFIX)) {
             return null;
         }
 
-        url = url.replaceFirst(prefix, "");
+        url = url.replaceFirst(PREFIX, "");
         String[] splitLink = url.split("/");
         try {
             return new GitHubParsedLinkResponseImpl(
