@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.bot.data.response;
+package ru.tinkoff.edu.java.scrapper.data.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 

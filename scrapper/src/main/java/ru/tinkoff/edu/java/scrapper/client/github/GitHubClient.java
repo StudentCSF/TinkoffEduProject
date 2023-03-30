@@ -2,22 +2,22 @@ package ru.tinkoff.edu.java.scrapper.client.github;
 
 import org.springframework.web.reactive.function.client.WebClient;
 
-public record GitHubClient(
-        WebClient webClient
-) implements IGitHubClient {
+public final class GitHubClient
+        implements IGitHubClient {
 
     private static final String DEFAULT_BASE_URL = "https://api.github.com";
 
-    public static GitHubClient create() {
-        return create(DEFAULT_BASE_URL);
+    private final WebClient webClient;
+
+    public GitHubClient() {
+        this(DEFAULT_BASE_URL);
     }
 
-    public static GitHubClient create(String baseUrl) {
-        return new GitHubClient(
+    public GitHubClient(String baseUrl) {
+        this.webClient =
                 WebClient.builder()
                         .baseUrl(baseUrl)
-                        .build()
-        );
+                        .build();
     }
 
     @Override

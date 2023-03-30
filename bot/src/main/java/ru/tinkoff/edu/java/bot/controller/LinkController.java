@@ -7,11 +7,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import ru.tinkoff.edu.java.bot.data.request.LinkUpdateRequest;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import ru.tinkoff.edu.java.bot.data.request.LinkUpdate;
 import ru.tinkoff.edu.java.bot.data.response.ApiErrorResponse;
 
-@RestController("/bot")
+@RestController
 public record LinkController() {
 
     @PostMapping("/updates")
@@ -27,7 +29,7 @@ public record LinkController() {
             )
     })
     public ResponseEntity<Void> linkUpdate(
-            @Valid @RequestBody LinkUpdateRequest linkUpdateRequest
+            @Valid @RequestBody LinkUpdate linkUpdate
     ) {
         return ResponseEntity.ok().build();
     }

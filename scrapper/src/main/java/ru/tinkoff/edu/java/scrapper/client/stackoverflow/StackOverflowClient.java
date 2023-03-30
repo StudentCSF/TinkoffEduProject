@@ -4,22 +4,21 @@ import org.springframework.web.reactive.function.client.WebClient;
 import ru.tinkoff.edu.java.scrapper.client.stackoverflow.data.PreQuestionResponse;
 import ru.tinkoff.edu.java.scrapper.client.stackoverflow.data.QuestionResponse;
 
-public record StackOverflowClient(
-        WebClient webClient
-) implements IStackOverflowClient {
+public final class StackOverflowClient
+        implements IStackOverflowClient {
 
     private static final String DEFAULT_BASE_URL = "https://api.stackexchange.com/2.3";
 
-    public static StackOverflowClient create() {
-        return create(DEFAULT_BASE_URL);
+    private final WebClient webClient;
+
+    public StackOverflowClient() {
+        this(DEFAULT_BASE_URL);
     }
 
-    public static StackOverflowClient create(String baseUrl) {
-        return new StackOverflowClient(
-                WebClient.builder()
-                        .baseUrl(baseUrl)
-                        .build()
-        );
+    public StackOverflowClient(String baseUrl) {
+        this.webClient = WebClient.builder()
+                .baseUrl(baseUrl)
+                .build();
     }
 
     @Override

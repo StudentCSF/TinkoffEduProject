@@ -13,11 +13,11 @@ public class ClientConfiguration {
 
     @Bean
     public IGitHubClient gitHubClient() {
-        return GitHubClient.create();
+        return new GitHubClient();
     }
 
     @Bean
     public IStackOverflowClient stackOverflowClient() {
-        return StackOverflowClient.create();
+        return new StackOverflowClient();
     }
 }

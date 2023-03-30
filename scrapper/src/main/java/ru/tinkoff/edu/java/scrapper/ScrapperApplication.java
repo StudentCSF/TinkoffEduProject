@@ -25,7 +25,5 @@ public class ScrapperApplication {
         IStackOverflowClient so = ctx.getBean(StackOverflowClient.class);
         var res2 = so.fetchQuestion(47225210L);
         System.out.println(res2);
-
-        ctx.getBean(LinkUpdaterScheduler.class).update();
     }
 }

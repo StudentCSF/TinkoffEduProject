@@ -4,14 +4,15 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 
 import java.net.URI;
+import java.util.List;
 
 @Schema
 @Validated
-public record LinkUpdateRequest(
+public record LinkUpdate(
         Long id,
         URI url,
         String description,
-        Long[] tgChatIds
+        List<Long> tgChatIds
 ) {
 
 }
