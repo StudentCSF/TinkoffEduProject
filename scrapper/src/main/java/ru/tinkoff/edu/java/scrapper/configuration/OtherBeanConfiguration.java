@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Configuration;
 public class OtherBeanConfiguration {
 
     @Bean
-    public long schedulerIntervalMillis(ApplicationConfig config) {
+    public long schedulerIntervalMillis(
+            ApplicationConfig config
+    ) {
         return config.scheduler().interval().toMillis();
     }
 }
