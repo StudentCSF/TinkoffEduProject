@@ -11,7 +11,6 @@ public class BotConfiguration {
     public TelegramBot telegramBot(
             ApplicationConfig config
     ) {
-        TelegramBot tgbot = new TelegramBot(config.token());
-        return tgbot;
+        return new TelegramBot(config.token());
     }
 }

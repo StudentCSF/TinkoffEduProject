@@ -9,10 +9,13 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.tinkoff.edu.java.scrapper.data.response.ApiErrorResponse;
+import ru.tinkoff.edu.java.scrapper.service.DumbService;
 
 @RestController
 @RequestMapping("/tg-chat")
-public record TelegramChatController() {
+public record TelegramChatController(
+        DumbService dumbService
+) {
 
     @PostMapping("/{id}")
     @Operation(summary = "Зарегистрировать чат")
@@ -29,6 +32,7 @@ public record TelegramChatController() {
     public ResponseEntity<Void> registerChat(
             @Valid @PathVariable(name = "id") Long id
     ) {
+        this.dumbService.addUser(id);
         return ResponseEntity.ok().build();
     }
 
@@ -54,6 +58,7 @@ public record TelegramChatController() {
     public ResponseEntity<Void> removeChat(
             @Valid @PathVariable(name = "id") Long id
     ) {
+        this.dumbService.removeUser(id);
         return ResponseEntity.ok().build();
     }
 }

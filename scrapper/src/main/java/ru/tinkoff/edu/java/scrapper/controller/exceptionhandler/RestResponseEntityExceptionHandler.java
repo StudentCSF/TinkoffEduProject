@@ -10,6 +10,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import ru.tinkoff.edu.java.scrapper.data.response.ApiErrorResponse;
 import ru.tinkoff.edu.java.scrapper.exception.LinkNotFoundException;
+import ru.tinkoff.edu.java.scrapper.exception.UserIdNotFoundException;
 
 import java.util.Arrays;
 
@@ -44,6 +45,23 @@ public class RestResponseEntityExceptionHandler
         return ResponseEntity.status(404).body(
                 new ApiErrorResponse(
                         "Ссылка не найдена",
+                        "404",
+                        ex.getClass().getSimpleName(),
+                        ex.getMessage(),
+                        Arrays.stream(ex.getStackTrace())
+                                .map(StackTraceElement::toString)
+                                .toList()
+                )
+        );
+    }
+
+    @ExceptionHandler(UserIdNotFoundException.class)
+    protected ResponseEntity<Object> handleLUserIdNotFoundException(
+            UserIdNotFoundException ex
+    ) {
+        return ResponseEntity.status(404).body(
+                new ApiErrorResponse(
+                        "Пользователь не найден в базе данных",
                         "404",
                         ex.getClass().getSimpleName(),
                         ex.getMessage(),
