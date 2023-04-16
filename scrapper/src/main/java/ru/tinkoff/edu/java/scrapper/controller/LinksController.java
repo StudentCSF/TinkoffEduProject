@@ -12,13 +12,15 @@ import ru.tinkoff.edu.java.scrapper.data.request.RemoveLinkRequest;
 import ru.tinkoff.edu.java.scrapper.data.response.ApiErrorResponse;
 import ru.tinkoff.edu.java.scrapper.data.response.LinkResponse;
 import ru.tinkoff.edu.java.scrapper.data.response.ListLinksResponse;
+import ru.tinkoff.edu.java.scrapper.service.DumbService;
 
-import java.net.URI;
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/links")
-public record LinksController() {
+public record LinksController(
+        DumbService dumbService
+) {
 
     @GetMapping
     @Operation(summary = "Получить все отслеживаемые ссылки")
@@ -35,10 +37,8 @@ public record LinksController() {
     public ListLinksResponse getAllLinks(
             @Valid @RequestHeader(name = "Tg-Chat-Id") Long id
     ) {
-        return new ListLinksResponse(
-                new ArrayList<>(),
-                0
-        );
+        List<LinkResponse> list = this.dumbService.getAll(id);
+        return new ListLinksResponse(list, list.size());
     }
 
     @PostMapping
@@ -57,7 +57,7 @@ public record LinksController() {
             @Valid @RequestHeader(name = "Tg-Chat-Id") Long id,
             @Valid @RequestBody AddLinkRequest addLinkRequest
     ) {
-        return new LinkResponse(1L, URI.create("dumbAdd"));
+        return this.dumbService.add(id, addLinkRequest);
     }
 
     @DeleteMapping
@@ -83,6 +83,6 @@ public record LinksController() {
             @Valid @RequestHeader(name = "Tg-Chat-Id") Long id,
             @Valid @RequestBody RemoveLinkRequest removeLinkRequest
     ) {
-        return new LinkResponse(2L, URI.create("dumbRm"));
+        return this.dumbService.remove(id, removeLinkRequest);
     }
 }

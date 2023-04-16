@@ -9,7 +9,7 @@ import ru.tinkoff.edu.java.linkparser.data.response.StackOverflowParsedLinkedRes
 public record StackOverflowLinkParserComponentImpl()
         implements ILinkParserComponent {
 
-    private static final String PREFIX = "https://stackoverflow.com/";
+    private static final String PREFIX = "https://stackoverflow.com/questions/";
 
     @Override
     public IParsedLinkResponse parseLink(LinkRequest link) {
@@ -23,7 +23,7 @@ public record StackOverflowLinkParserComponentImpl()
         String[] splitLink = url.split("/");
         try {
             return new StackOverflowParsedLinkedResponseImpl(
-                    splitLink[1]
+                    splitLink[0]
             );
         } catch (Exception e) {
             return null;

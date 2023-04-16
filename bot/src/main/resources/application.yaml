@@ -1,6 +1,14 @@
+spring:
+  config:
+    import: optional:file:.env.properties
+
 app:
   test: 12763
+  token: ${TG_EDUBOT_TOKEN}
 
 springdoc:
   swagger-ui:
     path: /swagger-ui
+
+server:
+  port: 8082
