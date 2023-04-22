@@ -6,8 +6,8 @@ import com.pengrad.telegrambot.request.SendMessage;
 import org.springframework.stereotype.Component;
 import ru.tinkoff.edu.java.bot.component.command.UntrackCommand;
 import ru.tinkoff.edu.java.bot.exception.UnregisteredUserException;
-import ru.tinkoff.edu.java.bot.ñlient.IScrapperClient;
-import ru.tinkoff.edu.java.bot.ñlient.request.RemoveLinkRequest;
+import ru.tinkoff.edu.java.bot.client.IScrapperClient;
+import ru.tinkoff.edu.java.bot.client.request.RemoveLinkRequest;
 
 import java.net.URI;
 

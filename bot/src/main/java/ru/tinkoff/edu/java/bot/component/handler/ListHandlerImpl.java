@@ -5,9 +5,8 @@ import com.pengrad.telegrambot.request.SendMessage;
 import org.springframework.stereotype.Component;
 import ru.tinkoff.edu.java.bot.component.command.ListCommand;
 import ru.tinkoff.edu.java.bot.exception.UnregisteredUserException;
-import ru.tinkoff.edu.java.bot.ñlient.IScrapperClient;
-import ru.tinkoff.edu.java.bot.ñlient.ScrapperClient;
-import ru.tinkoff.edu.java.bot.ñlient.response.ListLinksResponse;
+import ru.tinkoff.edu.java.bot.client.IScrapperClient;
+import ru.tinkoff.edu.java.bot.client.response.ListLinksResponse;
 
 @Component
 public record ListHandlerImpl(

@@ -1,6 +1,4 @@
-package ru.tinkoff.edu.java.bot.ñlient.response;
-
-import ru.tinkoff.edu.java.bot.ñlient.response.LinkResponse;
+package ru.tinkoff.edu.java.bot.client.response;
 
 import java.util.List;
 

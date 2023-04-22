@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.bot.ñlient.response;
+package ru.tinkoff.edu.java.bot.client.response;
 
 import java.net.URI;
 

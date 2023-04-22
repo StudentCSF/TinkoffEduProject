@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: initial
+      author: valeev
+      changes:
+        - tagDatabase:
+            tag: init
+
+  - include:
+      file: 01-link-table-init.sql
+      relativeToChangelogFile: true
+  - include:
+      file: 02-chat-table-init.sql
+      relativeToChangelogFile: true
+  - include:
+      file: 03-subscription-table-init.sql
+      relativeToChangelogFile: true
