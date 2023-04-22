@@ -1,4 +1,4 @@
-package ru.tinkoff.edu.java.bot.ñlient;
+package ru.tinkoff.edu.java.bot.client;
 
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import ru.tinkoff.edu.java.bot.exception.UnregisteredUserException;
-import ru.tinkoff.edu.java.bot.ñlient.request.AddLinkRequest;
-import ru.tinkoff.edu.java.bot.ñlient.request.RemoveLinkRequest;
-import ru.tinkoff.edu.java.bot.ñlient.response.LinkResponse;
-import ru.tinkoff.edu.java.bot.ñlient.response.ListLinksResponse;
+import ru.tinkoff.edu.java.bot.client.request.AddLinkRequest;
+import ru.tinkoff.edu.java.bot.client.request.RemoveLinkRequest;
+import ru.tinkoff.edu.java.bot.client.response.LinkResponse;
+import ru.tinkoff.edu.java.bot.client.response.ListLinksResponse;
 
 @Component
 public record ScrapperClient(

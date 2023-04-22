@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.tinkoff.edu.java.bot.component.command.ListCommand;
-import ru.tinkoff.edu.java.bot.configuration.BotConfiguration;
 import ru.tinkoff.edu.java.bot.configuration.CommonBeansConfiguration;
-import ru.tinkoff.edu.java.bot.ñlient.IScrapperClient;
-import ru.tinkoff.edu.java.bot.ñlient.response.LinkResponse;
-import ru.tinkoff.edu.java.bot.ñlient.response.ListLinksResponse;
+import ru.tinkoff.edu.java.bot.client.IScrapperClient;
+import ru.tinkoff.edu.java.bot.client.response.LinkResponse;
+import ru.tinkoff.edu.java.bot.client.response.ListLinksResponse;
 
 import java.net.URI;
 import java.util.ArrayList;
